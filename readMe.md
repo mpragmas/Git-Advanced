@@ -305,4 +305,20 @@ Your branch is ahead of 'origin/main' by 1 commit.
 
 PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git merge ft/new-branch-from-commit
 Already up to date.
+
+
+#-----------8----------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout ft/new-branch-from-commit
+M       readMe.md
+Switched to branch 'ft/new-branch-from-commit'
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git rebase main
+Current branch ft/new-branch-from-commit is up to date.
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced>
+
+#-----------9----------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git branch -m ft/new-branch-from-commit ft/improved-branch-name
+
 ```
