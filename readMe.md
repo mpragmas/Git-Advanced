@@ -340,9 +340,7 @@ e0d830d Implemented test 5
 9e3468a chore: Create third file
 b4de24e chore: Create initial file
 
-PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git commit -m "updated"
-[ft/improved-branch-name 1b81213] updated
- 1 file changed, 16 insertions(+)
+
 PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout e0d830d
 Note: switching to 'e0d830d'.
 You are in 'detached HEAD' state. You can look around, make experimental
