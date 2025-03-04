@@ -220,3 +220,89 @@ af9b769 HEAD@{23}: commit: chore: Create third file
 :
 
 ```
+
+# Advanced Git Part2
+
+```bash
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git branch ft/new-feature
+fatal: a branch named 'ft/new-feature' already exists
+
+#-----------2----------
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> echo "this new feature" > feature.txt
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git add feature.txt
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git commit -m "implemented core functionality for  new feature"
+[ft/new-feature b8c0197] implemented core functionality for  new feature
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 feature.txt
+
+ #-----------3----------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> echo "welcome to my project" > readme.txt
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git add readme.txt
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git commit -m "updated project  readme "
+[main ab8482a] updated project  readme
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readme.txt
+
+
+#-----------4----------
+
+ PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git push origin ft/new-feature
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 326 bytes | 163.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'ft/new-feature' on GitHub by visiting:
+remote:      https://github.com/mpragmas/Git-Advanced/pull/new/ft/new-feature
+remote:
+To https://github.com/mpragmas/Git-Advanced.git
+ * [new branch]      ft/new-feature -> ft/new-feature
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git fetch origin
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git pull origin main
+From https://github.com/mpragmas/Git-Advanced
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+#-----------5----------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git branch -d ft/new-feature
+error: the branch 'ft/new-feature' is not fully merged
+hint: If you are sure you want to delete it, run 'git branch -D ft/new-feature'
+hint: Disable this message with "git config advice.forceDeleteBranch false"
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git branch -D ft/new-feature
+Deleted branch ft/new-feature (was b8c0197).
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git push origin --delete ft/new-feature
+To https://github.com/mpragmas/Git-Advanced.git
+ - [deleted]         ft/new-feature
+
+
+ #-----------6----------
+ PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git log --oneline
+ab8482a (HEAD -> main) updated project  readme
+381d9af (origin/main) first commit
+e0d830d Implemented test 5
+70c7fad chore: Create fourth file
+9e3468a chore: Create third file
+b4de24e chore: Create initial file
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout -b ft/new-branch-from-commit ab8482a
+M       readMe.md
+Switched to a new branch 'ft/new-branch-from-commit'
+
+#-----------7----------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout main
+M       readMe.md
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git merge ft/new-branch-from-commit
+Already up to date.
+```
