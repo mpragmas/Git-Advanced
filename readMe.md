@@ -2,7 +2,11 @@
 
 ```bash
 
+<<<<<<< HEAD
+#---------------------------1----------
+=======
 #--------------------------1----------
+>>>>>>> 1026a7a229b8ccb4778d8b4797771adfd326e2fe
 
 HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (master)
 $ touch test{1..4}.md
@@ -95,7 +99,7 @@ $ git commit -m "chore: Create fourth file"
 1 file changed, 0 insertions(+), 0 deletions(-)
 create mode 100644 test4.md
 
-#------------------------5---------------------
+#------------------------5-----------------------------------
 
 HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (master)
 $ git rebase -i HEAD~2
@@ -331,6 +335,7 @@ PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git branch -m ft/new-branch
 
 #---------------------------10--------------------
 
+
 PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git log --oneline
 e50c6e2 (HEAD -> ft/improved-branch-name) first commit
 ab8482a (main) updated project  readme
@@ -359,8 +364,152 @@ Or undo this operation with:
 Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at e0d830d Implemented test 5
+```
 
-PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git switch -c new-branch-from-detached
-Switched to a new branch 'new-branch-from-detached'
+# Advanced Git Part3
+
+```bash
+
+#---------------------1------------------------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git stash
+Saved working directory and index state WIP on main: 787c3ed updated
+
+#---------------------2------------------------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   readme.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (d5bdc75d5e014ba21161ceb242b4dc97cd879a5a)
+
+#---------------------3------------------------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout  ft/improved-branch-name
+Switched to branch 'ft/improved-branch-name'
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git add readme.txt
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git commit -m "resolving conflicts"
+[main 0c96fba] resolving conflicts
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git merge main
+Updating 1dec886..d4124c1
+Fast-forward
+ readMe.md  |  66 ++++++++++++++++++++++++++++++++++++++++++++++++++-----------
+ readme.txt | Bin 96 -> 58 bytes
+ 2 files changed, 54 insertions(+), 12 deletions(-)
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced>
+
+#---------------------4------------------------
+
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git mergetool
+This message is displayed because 'merge.tool' is not configured.
+See 'git mergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+tortoisemerge emerge vimdiff nvimdiff
+No files need merging
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git config --global merge.tool vscode
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git config --global mergetool.vscode.cmd "code --wait $MERGED"
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git mergetool
+No files need merging
+
+#---------------------5------------------------
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout main
+Previous HEAD position was 25b826e Merged ft/improved-branch-name and resolved conflict in readme.txt
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 13 commits.
+  (use "git push" to publish your local commits)
+
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced> git checkout  new-branch-from-detached
+Switched to branch 'new-branch-from-detached'
+PS C:\Users\HP\Documents\lesson\TheGym\Git Advanced>
+
+#---------------------6------------------------
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ touch .gitignore
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git status
+On branch new-branch-from-detached
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+#---------------------7------------------------
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git tag v1.0
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git log
+commit e92dc1f3b16df6c441a7d5888fd398b4542576fd (HEAD -> new-branch-from-detached, tag: v1.0)
+Author: mpragmas <mpragmas@gmail.com>
+Date:   Tue Mar 4 15:34:33 2025 +0200
+
+    updated
+
+commit e0d830d8e110d33ccf6632c220cad9b5cea66e65
+Author: mpragmas <mpragmas@gmail.com>
+Date:   Tue Mar 4 11:57:42 2025 +0200
+
+    Implemented test 5
+
+commit 70c7fad8977977096fda399f6a14faea132f4d36
+Author: mpragmas <mpragmas@gmail.com>
+Date:   Tue Mar 4 11:48:32 2025 +0200
+
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git tag v1.0 e92dc1f3b16df6c441a7d5888fd398b4542576fd
+fatal: tag 'v1.0' already exists
+
+#---------------------8------------------------
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git tag
+v1.0
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git tag -d v1.0
+Deleted tag 'v1.0' (was e92dc1f)
+
+#---------------------9------------------------
+
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git push origin main
+Enumerating objects: 40, done.
+Counting objects: 100% (39/39), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (34/34), 3.16 KiB | 202.00 KiB/s, done.
+Total 34 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (19/19), completed with 2 local objects.
+To https://github.com/mpragmas/Git-Advanced.git
+   787c3ed..1026a7a  main -> main
+
+
+#---------------------10------------------------
+
+
+HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (new-branch-from-detached)
+$ git pull origin main
+From https://github.com/mpragmas/Git-Advanced
+ * branch            main       -> FETCH_HEAD
+Auto-merging readMe.md
+CONFLICT (add/add): Merge conflict in readMe.md
+Automatic merge failed; fix conflicts and then commit the result.
 
 ```
