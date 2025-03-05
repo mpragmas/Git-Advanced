@@ -2,11 +2,9 @@
 
 ```bash
 
-<<<<<<< HEAD
+
 #---------------------------1----------
-=======
-#--------------------------1----------
->>>>>>> 1026a7a229b8ccb4778d8b4797771adfd326e2fe
+
 
 HP@DESKTOP-IPFMADI MINGW64 ~/Documents/lesson/TheGym/Git Advanced (master)
 $ touch test{1..4}.md
